@@ -1,0 +1,17 @@
+stock AAPL {
+    price: 150.50;
+    shares: 100;
+}
+
+display AAPL;
+
+AAPL.adjust_price(10.0%);
+
+display AAPL.market_cap;
+display AAPL.price;
+display AAPL.shares;
+
+AAPL.split(2);
+
+display AAPL;
+

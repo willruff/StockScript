@@ -1,0 +1,22 @@
+stock AAPL {
+    price: 150.50;
+    shares: 100;
+}
+
+stock MSFT {
+    price: 87.00;
+    shares: 250;
+}
+
+crypto BTC {
+    price: 100000.00;
+    supply: 21000000;
+}
+
+AAPL.merge(MSFT);
+
+display AAPL;
+
+AAPL.adjust_price(-10);
+
+display;

@@ -1,0 +1,71 @@
+Model:
+    statements*=Statement
+;
+
+Statement:
+    StockDeclaration | CryptoDeclaration | AssetOperation | Display | SimulationCommand
+;
+
+StockDeclaration:
+    'stock' name=ID '{'
+        'price:' price=FLOAT ';'
+        'shares:' shares=INT ';'
+    '}'
+;
+
+CryptoDeclaration:
+    'crypto' name=ID '{'
+        'price:' price=FLOAT ';'
+        'supply:' supply=FLOAT ';'
+    '}'
+;
+
+AssetDeclaration:
+    StockDeclaration | CryptoDeclaration
+;
+
+AssetOperation:
+    asset=[AssetDeclaration:ID] '.' operation=ID '(' parameter=Value ')' ';'
+;
+
+Value:
+    PercentValue | NumericValue | AssetReference
+;
+
+NumericValue:
+    value=FLOAT
+;
+
+PercentValue:
+    value=FLOAT '%'
+;
+
+AssetReference:
+    asset=[AssetDeclaration:ID]
+;
+
+Display:
+    'display' (asset=[AssetDeclaration:ID])? 
+    ('.' displayType=DisplayType)?
+    ';'
+;
+
+SimulationCommand:
+    SimulateMarket | SimulateAsset
+;
+
+SimulateMarket:
+    'simulate' sentiment=SentimentType ';'
+;
+
+SimulateAsset:
+    'simulate' asset=[AssetDeclaration:ID] sentiment=SentimentType ';'
+;
+
+SentimentType:
+    type=ID
+;
+
+DisplayType:
+    'price' | 'shares' | 'supply' | 'market_cap' | 'all'
+;

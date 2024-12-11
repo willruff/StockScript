@@ -1,0 +1,40 @@
+stock TSLA {
+    price: 650.00;
+    shares: 300;
+}
+
+stock AMZN {
+    price: 3200.00;
+    shares: 50;
+}
+
+stock AAPL {
+    price: 150.50;
+    shares: 1000;
+}
+
+stock GOOGL {
+    price: 2800.00;
+    shares: 100;
+}
+
+crypto BTC {
+    price: 100000.00;
+    supply: 21000000;
+}
+
+crypto ETH {
+    price: 3500.00;
+    supply: 120000000;
+}
+
+crypto DOGE {
+    price: 0.50;
+    supply: 130000000000;
+}
+
+simulate random_day;
+simulate AAPL bad_day;
+simulate BTC good_day;
+
+display;
